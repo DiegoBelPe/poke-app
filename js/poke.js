@@ -1,7 +1,19 @@
-let buttonPet = document.getElementById("button-pet");
 
-buttonPet.addEventListener("click", selectPets);
+let playerAttack;
+let enemyAttack; 
 
+function startGame (){
+  const buttonPet = document.getElementById("button-pet");
+  buttonPet.addEventListener("click", selectPets);
+
+  const buttonFire = document.getElementById("power-fire")
+  buttonFire.addEventListener('click', fireAttack);
+  const buttonWater = document.getElementById("power-water")
+  buttonWater.addEventListener('click', waterAttack) 
+  const buttonLand = document.getElementById("power-land")
+  buttonLand.addEventListener('click', landAttack) 
+  
+}
 function selectPets() {
   const radioOne = document.getElementById("hipodoge");
   const radioTwo = document.getElementById("capipepo");
@@ -42,3 +54,31 @@ function randomEnemy(min, max) {
   
 }
 
+function fireAttack(){
+  playerAttack = 'Fire'
+  enemyAttackRamdon()
+}
+function waterAttack(){
+  playerAttack = 'Water'
+  enemyAttackRamdon()
+}
+function landAttack(){
+  playerAttack = 'Land'
+  enemyAttackRamdon()
+}
+
+function enemyAttackRamdon(){
+  let enemyAttackRand = randomEnemy(1, 3);
+
+  if(enemyAttackRand === 1){
+    enemyAttack = 'Fire'
+  }
+  if(enemyAttackRand == 2){
+    enemyAttack = 'Water'
+  }else{
+    enemyAttack = 'land'
+  }
+
+}
+
+window.addEventListener('load', startGame)
