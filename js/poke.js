@@ -78,6 +78,17 @@ function enemyAttackRamdon(){
   }else{
     enemyAttack = 'land'
   }
+  createMessage()
+}
+
+function createMessage(){
+  let sectionMessages = document.getElementById('messages')
+
+  let paragraph = document.createElement('p')
+  paragraph.innerHTML = `Your pet attacked with ${playerAttack}, your enemy's pet attacked with ${enemyAttack}, you win.`
+
+  sectionMessages.appendChild(paragraph)
+
 
 }
 
