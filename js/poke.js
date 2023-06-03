@@ -1,6 +1,7 @@
 
 let playerAttack;
-let enemyAttack; 
+let enemyAttack;
+
 
 function startGame (){
   const buttonPet = document.getElementById("button-pet");
@@ -76,20 +77,34 @@ function enemyAttackRamdon(){
   if(enemyAttackRand == 2){
     enemyAttack = 'Water'
   }else{
-    enemyAttack = 'land'
+    enemyAttack = 'Land'
   }
-  createMessage()
+  combat()
 }
 
-function createMessage(){
+function createMessage(resultCombat){
   let sectionMessages = document.getElementById('messages')
 
   let paragraph = document.createElement('p')
-  paragraph.innerHTML = `Your pet attacked with ${playerAttack}, your enemy's pet attacked with ${enemyAttack}, you win.`
+  paragraph.innerHTML = `Your pet attacked with ${playerAttack}, your enemy's pet attacked with ${enemyAttack}, ${resultCombat}.`
 
   sectionMessages.appendChild(paragraph)
 
 
+}
+
+function combat(){
+  if(enemyAttack == playerAttack){
+    createMessage('Tie')
+  }else if(playerAttack == 'Fire' &&  enemyAttack == 'Land'){
+       createMessage('You win')
+  }else if(playerAttack == 'Water' &&  enemyAttack == 'Fire'){
+    createMessage('You win')
+  }else if(playerAttack == 'Land' &&  enemyAttack == 'Water'){
+    createMessage('You win')
+  }else{
+    createMessage('you lose')
+  }
 }
 
 window.addEventListener('load', startGame)
