@@ -13,6 +13,9 @@ function startGame() {
   buttonWater.addEventListener("click", waterAttack);
   const buttonLand = document.getElementById("power-land");
   buttonLand.addEventListener("click", landAttack);
+
+  const restartGame = document.getElementById('restart-game')
+  restartGame.addEventListener("click", restartAll)
 }
 function selectPets() {
   const radioOne = document.getElementById("hipodoge");
@@ -86,7 +89,34 @@ function createMessage(resultCombat) {
 
   sectionMessages.appendChild(paragraph);
 }
+function endMessage(endResult) {
+  let sectionMessages = document.getElementById("messages");
 
+  let paragraph = document.createElement("p");
+  paragraph.innerHTML = endResult;
+
+  sectionMessages.appendChild(paragraph);
+
+  const buttonFire = document.getElementById("power-fire");
+  buttonFire.disabled = true;
+  const buttonWater = document.getElementById("power-water");
+  buttonWater.disabled = true;;
+  const buttonLand = document.getElementById("power-land");
+  buttonLand.disabled = true;
+}
+
+function reviewLives(){
+  if(livesPetEnemy == 0){
+    endMessage('You win Game!')
+  }else if(livesPetPlayer==0){
+    endMessage('You lose Game!')
+
+  }
+}
+
+function restartAll(){
+  location.reload()
+}
 function combat() {
   const livesPlayer = document.getElementById("livesPlayer");
   const livesEnemy = document.getElementById("livesEnemy");
@@ -110,6 +140,7 @@ function combat() {
     livesPetPlayer--;
     livesPlayer.innerHTML = livesPetPlayer;
   }
+  reviewLives()
 }
 
 window.addEventListener("load", startGame);
