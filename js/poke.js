@@ -4,6 +4,14 @@ let livesPetPlayer = 3;
 let livesPetEnemy = 3;
 
 function startGame() {
+  //section-restart
+
+  const sectionRestart = document.getElementById('section-restart');
+  sectionRestart.style.display = 'none';
+
+  const sectionSelectAttack = document.getElementById('select-attack');
+  sectionSelectAttack.style.display = 'none';
+
   const buttonPet = document.getElementById("button-pet");
   buttonPet.addEventListener("click", selectPets);
 
@@ -18,6 +26,13 @@ function startGame() {
   restartGame.addEventListener("click", restartAll)
 }
 function selectPets() {
+
+  const sectionSelectAttack = document.getElementById('select-attack');
+  sectionSelectAttack.style.display = 'block';
+
+  const sectionSelectPet = document.getElementById('select-pet');
+  sectionSelectPet.style.display = 'none';
+
   const radioOne = document.getElementById("hipodoge");
   const radioTwo = document.getElementById("capipepo");
   const radioThree = document.getElementById("ratigueya");
@@ -103,6 +118,9 @@ function endMessage(endResult) {
   buttonWater.disabled = true;;
   const buttonLand = document.getElementById("power-land");
   buttonLand.disabled = true;
+
+  const sectionRestart = document.getElementById('section-restart');
+  sectionRestart.style.display = 'block';
 }
 
 function reviewLives(){
